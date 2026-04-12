@@ -31,6 +31,7 @@ members:
     paths:
       include:
         - docs/research-plan/README.md
+	- tools/check-research-plan.sh
 
   - key: research-plan-process
     name: Research Plan Process
