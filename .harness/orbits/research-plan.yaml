@@ -1,0 +1,77 @@
+id: research-plan
+name: Research Plan Orbit
+description: |
+    Turn ambiguous feature, refactor, API, framework, or architecture questions into evidence-backed implementation plans.
+meta:
+    file: .harness/orbits/research-plan.yaml
+    agents_template: |
+        # Research Plan Orbit
+
+        You are responsible for turning a research or planning request into an
+        evidence-backed implementation plan.
+
+        Work in this order:
+        1. Triage the request.
+        2. Gather documentation or code evidence.
+        3. Produce architecture trade-offs when design choices matter.
+        4. Produce a phased implementation plan.
+        5. Record the result in `docs/research-plan/records/`.
+    include_in_projection: true
+    include_in_write: true
+    include_in_export: true
+    include_description_in_orchestration: true
+members:
+    - key: research-plan-rules
+      name: Research Plan Rules
+      description: Objective, boundaries, rules, done probe, and record contract.
+      role: rule
+      paths:
+        include:
+            - docs/research-plan/README.md
+            - tools/check-research-plan.sh
+    - key: research-plan-process
+      name: Research Plan Process
+      description: Triage, research, architecture, and planning process docs.
+      role: process
+      paths:
+        include:
+            - docs/research-plan/process/**
+      scopes:
+        export: true
+    - key: research-plan-templates
+      name: Research Plan Templates
+      description: Reusable output templates.
+      role: subject
+      paths:
+        include:
+            - docs/research-plan/templates/**
+      scopes:
+        export: true
+    - key: research-plan-records
+      name: Research Plan Records
+      description: Runtime records produced by workers.
+      role: subject
+      paths:
+        include:
+            - docs/research-plan/records/**
+rules:
+    scope:
+        projection_roles:
+            - meta
+            - subject
+            - rule
+            - process
+        write_roles:
+            - meta
+            - rule
+        export_roles:
+            - meta
+            - rule
+        orchestration_roles:
+            - meta
+            - rule
+            - process
+    orchestration:
+        include_orbit_description: true
+        materialize_agents_from_meta: true
+
