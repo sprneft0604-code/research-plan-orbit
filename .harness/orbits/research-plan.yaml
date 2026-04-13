@@ -12,16 +12,24 @@ meta:
   include_description_in_orchestration: true
   agents_template: |
     # Research Plan Orbit
+    You are responsible for one focused research-to-plan pass.
 
-    You are responsible for turning a research or planning request into an
-    evidence-backed implementation plan.
+    Start by identifying the request, the decision needed, and the evidence
+    available: project files, local docs, external documentation, prior records,
+    logs, or user-provided constraints.
 
-    Work in this order:
-    1. Triage the request.
-    2. Gather documentation or code evidence.
-    3. Produce architecture trade-offs when design choices matter.
-    4. Produce a phased implementation plan.
-    5. Record the result in `docs/research-plan/records/`.
+    Do not implement fixes or features inside this orbit unless explicitly
+    redirected. Produce evidence-backed decisions and phased implementation
+    plans, then record the result in `docs/research-plan/records/` using
+    `docs/research-plan/templates/research-plan-record.md`.
+
+    If the request cannot be scoped, required evidence is unavailable, or the
+    task is actually implementation work, stop and record `blocked`, `failure`,
+    `abnormal_exit`, or `external_stop` with the next useful handoff step.
+
+    Read `docs/research-plan/README.md` for the rule contract,
+    `docs/research-plan/process/` for the operating flow, and use
+    `tools/check-research-plan.sh` only as a cheap record readiness probe.
 
 members:
   - key: research-plan-rules
@@ -64,8 +72,8 @@ members:
 rules:
   scope:
     projection_roles: [meta, subject, rule, process]
-    write_roles: [meta, rule]
-    export_roles: [meta, rule]
+    write_roles: [meta, subject, rule, process]
+    export_roles: [meta, rule, process]
     orchestration_roles: [meta, rule, process]
   orchestration:
     include_orbit_description: true
