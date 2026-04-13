@@ -1,4 +1,4 @@
-\# Blocked And Handoff Process
+# Blocked And Handoff Process
 
 
 
@@ -10,19 +10,19 @@ Record:
 
 
 
-\- status: blocked, failure, abnormal\_exit, or external\_stop
+- status: blocked, failure, abnormal\_exit, or external\_stop
 
-\- current request
+- current request
 
-\- evidence inspected
+- evidence inspected
 
-\- what is missing or contradictory
+- what is missing or contradictory
 
-\- why continuing is not useful
+- why continuing is not useful
 
-\- recommended next action
+- recommended next action
 
-\- suggested next orbit or human decision
+- suggested next orbit or human decision
 
 
 
